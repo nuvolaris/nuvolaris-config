@@ -21,5 +21,5 @@
 
 This repo includes the administrative interface
 
-You can discuss it in the #[nuvolaris-training](https://discord.gg/TeNA2Pa5Nu) discord channel and in the forum under the category [training](https://github.com/nuvolaris/nuvolaris/discussions/categories/training).
+You can discuss it in the #[nuvolaris-admin](https://discord.gg/TfhXXxqXzj) discord channel and in the forum under the category [admin](https://github.com/nuvolaris/nuvolaris/discussions/categories/admin).
 
