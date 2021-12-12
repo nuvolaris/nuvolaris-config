@@ -8,6 +8,10 @@
     "start": "sirv public --no-clear",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
+  "licenses": [{
+    "type": "Apache-2.0",
+    "url": "https://github.com/nuvolaris/nuvolaris/raw/main/LICENSE"
+   }],
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
