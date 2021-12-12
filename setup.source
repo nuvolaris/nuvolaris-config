@@ -17,6 +17,7 @@
 # under the License.
 #
 ## Preflight checks
+## Prefligt checks
 die() {
     echo ERROR: "$@"
     kill -INT $$
@@ -30,18 +31,16 @@ fi
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]] 
 then echo "You must source this script with bash, not execute it." ; kill -INT $$
 fi
-cp ~/.*-version .
+if test -e ../kubeconfig
+then sudo cp ../kubeconfig /etc/kubeconfig
+fi
 if test -e kubeconfig
 then sudo cp kubeconfig /etc/kubeconfig
 fi
 if ! test -e /etc/kubeconfig
 then die "Please run 'docker cp \$HOME/.kube/config nuvolaris-controller:/etc/kubeconfig' to use your Kubernetes and try again."
-else mkdir ~/.kube/ ; sudo cat /etc/kubeconfig >~/.kube/config
+else mkdir -p ~/.kube/ ; sudo cat /etc/kubeconfig >~/.kube/config
 fi
-export PATH=$HOME/bin:$HOME/.local/bin:$PATH
-if ! kubectl get nodes
-then die "Cannot access to your Kubernetes - you cannot test your code"
-else ok Kubernetes ready
-fi
+cp ~/.*-version .
 # setup
 npm install
