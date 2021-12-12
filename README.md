@@ -25,4 +25,11 @@ You can discuss it in the #[nuvolaris-admin](https://discord.gg/TfhXXxqXzj) disc
 
 Please read the [development document](https://github.com/nuvolaris/nuvolaris/blob/main/docs/DEVEL.md) for instructions how to setup the development environment and develop this module.
 
+# Development
 
+The project is developed in [Typescript](https://www.typescriptlang.org/) with [Svelte](https://svelte.dev/).
+
+Support task:
+
+- `task dev`  launches a development server with code reloading 
+- `task build` builds everything in production mode

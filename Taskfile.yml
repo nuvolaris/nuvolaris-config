@@ -25,6 +25,10 @@ tasks:
     status:
       - test -d node_modules
 
+  dev:
+    cmds:
+      - npm run dev
+
   build:
     cmds:
       - npm run build
