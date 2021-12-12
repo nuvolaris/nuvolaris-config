@@ -19,7 +19,10 @@
 -->
 # nuvolaris-admin
 
-This repo includes the administrative interface
+This repo includes the administrative interface.
 
 You can discuss it in the #[nuvolaris-admin](https://discord.gg/TfhXXxqXzj) discord channel and in the forum under the category [admin](https://github.com/nuvolaris/nuvolaris/discussions/categories/admin).
+
+Please read the [development document](https://github.com/nuvolaris/nuvolaris/blob/main/docs/DEVEL.md) for instructions how to setup the development environment and develop this module.
+
 
