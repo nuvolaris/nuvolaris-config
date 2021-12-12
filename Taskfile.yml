@@ -18,9 +18,13 @@
 version: '3'
 
 tasks:
+
   setup:
     cmds:
       - npm install
+    status:
+      - test -d node_modules
+
   build:
     cmds:
       - npm run build
