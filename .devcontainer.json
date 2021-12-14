@@ -20,6 +20,6 @@
 	"mounts": [ "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"],
 	"remoteUser": "nuvolaris",
 	"overrideCommand": false,
-	"runArgs": ["--name=nuvolaris-admin"],
+	"runArgs": ["--name=nuvolaris-admin", "--network=host"],
 	"extensions": ["svelte.svelte-vscode"]
 }
