@@ -17,11 +17,11 @@
   ~ under the License.
   ~
 -->
-# nuvolaris-admin
+# nuvolaris-config
 
-This repo includes the administrative interface.
+This repo includes the configurator of the operatior.
 
-You can discuss it in the #[nuvolaris-admin](https://discord.gg/TfhXXxqXzj) discord channel and in the forum under the category [admin](https://github.com/nuvolaris/nuvolaris/discussions/categories/admin).
+You can discuss it in the #[nuvolaris-config](https://discord.gg/TfhXXxqXzj) discord channel and in the forum under the category [config](https://github.com/nuvolaris/nuvolaris/discussions/categories/config).
 
 Please read the [development document](https://github.com/nuvolaris/nuvolaris/blob/main/docs/DEVEL.md) for instructions how to setup the development environment and develop this module.
 
