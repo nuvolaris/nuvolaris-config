@@ -16,10 +16,10 @@
 // under the License.
 {
 	"name": "Nuvolaris DevKit",
-	"image": "ghcr.io/nuvolaris/nuvolaris-devkit:neo-2021.1212.1530",
+	"image": "ghcr.io/nuvolaris/nuvolaris-devkit:neo-21.1228.12",
 	"mounts": [ "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"],
 	"remoteUser": "nuvolaris",
 	"overrideCommand": false,
-	"runArgs": ["--name=nuvolaris-admin", "--network=host"],
+	"runArgs": ["--network=host"],
 	"extensions": ["svelte.svelte-vscode"]
 }
