@@ -19,12 +19,6 @@ version: '3'
 
 tasks:
 
-  setup:
-    cmds:
-      - npm install server
-      - npm install client 
-    status:
-      - test -d server/node_modules
-      - test -d client/node_modules
-
+  setup: 
+    silent: true
  
