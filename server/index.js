@@ -21,6 +21,7 @@ const fs = require('fs')
 const path = require("path")
 const express = require('express')
 const cors = require('cors')
+const mongo = require("mongodb");
 
 const rootDir = path.dirname(__dirname) + "/client/public"
 console.log(rootDir)
@@ -36,9 +37,14 @@ app.get('/app/*', (req, res) => {
     res.sendFile(file)
 })
 
-let hello = require("./hello")
-let db = {}
-hello(app, db)
+const mongoUrl =  "mongodb://localhost"
+const client =  new mongo.MongoClient(mongoUrl)
+client.connect()
+const db = client.db("data")
+
+// add here your apis
+require("./hello")(app, db)
+// end
 
 let server = require("http").createServer({}, app);
 server.listen(port, "0.0.0.0", () => {
