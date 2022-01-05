@@ -15,9 +15,8 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-/node_modules/
+node_modules/
 /public/build/
-kubeconfig
 .DS_Store
 .*-version
 kubeconfig
