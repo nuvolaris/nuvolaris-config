@@ -18,7 +18,8 @@
  *
  */
 module.exports = (app, db) => {
-  app.get("/hello",  (req, res) => {
-      res.send("ciao!!!")
+  app.get("/hello",  async(req, res) => {
+      let data = await db.collection("anagrafica").find().toArray()
+      res.send(data)
   })  
 }
