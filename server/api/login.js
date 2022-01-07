@@ -1,4 +1,4 @@
-const config = require("../config.js")
+//const config = require("../config.js")
 
 function generateRandomString(iLen) {
     var sRnd = '';
@@ -15,7 +15,7 @@ module.exports = function (app, db) {
 
 
     // Get a login
-    app.get("/api/logins/:email/:password", async (req, res) => {
+    app.get("/api/login/:email/:password", async (req, res) => {
         console.log("get /api/logins", req.params)
 
         let email = req.params.email;

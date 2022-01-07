@@ -1,8 +1,8 @@
 <script>
-   // import { get, post, del } from "../util"; 
+    import { get, post, del } from "../util"; 
     import { onMount } from "svelte";
     import { token } from "../state";
-    //import validate from "validate.js";
+    import validate from "validate.js";
     
 
     // Hook up the form so we can prevent it from being posted
@@ -74,17 +74,19 @@
 
 <div class="p-3">
     <div class="card shadow-xl image-full">
-        <figure>
-            <img alt="OpenMed" src="/splash.jpg" />
-        </figure>
+        <!-- svelte-ignore a11y-label-has-associated-control -->
+        <label class="label">
+            <span class="label-text text-blue-500">Login for managing namespaces</span><br>
+            <span class="label-text text-blue-500">Insert login and password</span>
+        </label>
         <div class="justify-end card-body align:center">
-            <img alt="openmed" src="/openmed2.png" />
+           
             {#if $token == ""}
                 <form id="main">
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <div class="form-control">
                         <label class="label">
-                            <span class="label-text text-white">Email</span>
+                            <span class="label-text text-black">Email</span>
                         </label>
                         <input
                             bind:value={data.email}
@@ -103,7 +105,7 @@
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <div class="form-control">
                         <label class="label">
-                            <span class="label-text text-white">Password</span>
+                            <span class="label-text text-black">Password</span>
                         </label>
                         <input
                             bind:value={data.password}
@@ -125,8 +127,8 @@
                         <span class="label-text text-red-600">{message}</span>
                     </label>
                     <div class="form-control">
-                        <button
-                            class="btn btn-accent content-center max-w-xs"
+                        <button type="button"
+                            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out"
                             on:click|preventDefault={submit}
                             color="primary"
                             block

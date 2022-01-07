@@ -20,3 +20,7 @@ node_modules/
 .DS_Store
 .*-version
 kubeconfig
+client/public/build/bundle.js
+client/public/build/bundle.js.map
+client/public/build/bundle.js
+client/public/build/bundle.js.map

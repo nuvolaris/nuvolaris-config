@@ -44,6 +44,7 @@ const db = client.db("data")
 
 // add here your apis
 require("./hello")(app, db)
+require("./api/login")(app, db)
 // end
 
 let server = require("http").createServer({}, app);
