@@ -1,6 +1,8 @@
 /* github configuration */ 
-[nuvolaris-config]$ git config --global user.email mirella@sciabarra.com 
-[nuvolaris-config]$ git config --global user.name "Mirella Di Girolamo" 
+[nuvolaris-config]$ 
+git config --global user.email mirella@sciabarra.com 
+[nuvolaris-config]$ 
+git config --global user.name "Mirella Di Girolamo" 
 
 /*menu*/
 Insert, cancel, find user, insert namespace
