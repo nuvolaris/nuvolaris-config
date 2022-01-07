@@ -4,17 +4,23 @@
   "private": true,
   "scripts": {
     "build": "rollup -c",
+    "devnew": "rollup -c -w --environment START:serverdev",
     "dev": "rollup -c -w",
-    "start": "sirv public --no-clear",
+    "start": "sirv public --no-clear --single --no-clear --cors",
+    "serverdev": "cd ../server ; npm run dev",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
-  "licenses": [{
-    "type": "Apache-2.0",
-    "url": "https://github.com/nuvolaris/nuvolaris/raw/main/LICENSE"
-   }],
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "https://github.com/nuvolaris/nuvolaris/raw/main/LICENSE"
+    }
+  ],
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-typescript": "^8.0.0",
+    "@tsconfig/svelte": "^2.0.0",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",
@@ -23,12 +29,11 @@
     "svelte": "^3.0.0",
     "svelte-check": "^2.0.0",
     "svelte-preprocess": "^4.0.0",
-    "@rollup/plugin-typescript": "^8.0.0",
-    "typescript": "^4.0.0",
     "tslib": "^2.0.0",
-    "@tsconfig/svelte": "^2.0.0"
+    "typescript": "^4.0.0"
   },
   "dependencies": {
+    "page": "^1.11.6",
     "sirv-cli": "^1.0.0"
   }
 }

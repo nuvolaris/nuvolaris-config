@@ -18,10 +18,9 @@
  *
 -->
 <script lang="ts">
-	export let name: string;	
-</script>
+	import Router from "./Router.svelte";	
+ </script>
 
-<main>
-	<h1 class="text-3xl font-bold underline">Hello {name}!</h1>
-</main>
+ <Router />
+ 
 
