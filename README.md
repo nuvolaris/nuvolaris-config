@@ -27,9 +27,7 @@ Please read the [development document](https://github.com/nuvolaris/nuvolaris/bl
 
 # Development
 
-The project is developed in [Typescript](https://www.typescriptlang.org/) with [Svelte](https://svelte.dev/).
+The frontend is developed in [Typescript](https://www.typescriptlang.org/) with [Svelte](https://svelte.dev/).
 
-Support task:
+The backend is an http server with Express and Nodejs 
 
-- `task dev`  launches a development server with code reloading 
-- `task build` builds everything in production mode
