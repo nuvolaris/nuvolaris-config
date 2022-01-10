@@ -2,6 +2,7 @@
     import router from "page"; 
     import Layout from "./Layout.svelte";
     import Home from "./pages/Home.svelte";
+    import Inhome from "./pages/Inhome.svelte";
     
 
     
@@ -26,7 +27,7 @@
         
     });
  
-    router("/", () => ([page, title, hideTitle] = [Home, "Home", true]));
+    
 
     router(
         "/app/calendar",

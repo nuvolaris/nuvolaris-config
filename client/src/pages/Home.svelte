@@ -2,7 +2,9 @@
     import { get, post, del } from "../util"; 
     import { onMount } from "svelte";
     import { token } from "../state";
+    import { loggedId } from "../state";
     import validate from "validate.js";
+    import Inhome from "./Inhome.svelte"
     
 
     // Hook up the form so we can prevent it from being posted
@@ -75,13 +77,15 @@
 <div class="p-3">
     <div class="card shadow-xl image-full">
         <!-- svelte-ignore a11y-label-has-associated-control -->
-        <label class="label">
-            <span class="label-text text-blue-500">Login for managing namespaces</span><br>
-            <span class="label-text text-blue-500">Insert login and password</span>
-        </label>
+        <h1>Managing namespaces</h1><br>
+        <!-- svelte-ignore a11y-label-has-associated-control -->
+        
         <div class="justify-end card-body align:center">
            
             {#if $token == ""}
+            <label class="label">
+                <span class="label-text text-blue-500">Insert login and password</span>
+            </label>
                 <form id="main">
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <div class="form-control">
