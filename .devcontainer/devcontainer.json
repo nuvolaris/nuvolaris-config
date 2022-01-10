@@ -15,11 +15,21 @@
 // specific language governing permissions and limitations
 // under the License.
 {
-	"name": "Nuvolaris DevKit",
-	"image": "ghcr.io/nuvolaris/nuvolaris-devkit:neo-22.0103.09",
-	"mounts": [ "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"],
+	"name": "nuvolaris",
+	"image": "ghcr.io/nuvolaris/nuvolaris-devkit:neo-22.0109.20",
+	//"build": { "dockerfile": "Dockerfile" },
+	"mounts": [
+		"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
+	],
 	"remoteUser": "nuvolaris",
 	"overrideCommand": false,
-	"runArgs": ["--network=host"],
-	"extensions": ["svelte.svelte-vscode"]
+	"runArgs": [
+		"--network=host"
+	],
+	"extensions": [
+		"stuart.unique-window-colors",
+		"oderwat.indent-rainbow",
+		"eamodio.gitlens",
+		"mhutchie.git-graph"
+	]
 }
