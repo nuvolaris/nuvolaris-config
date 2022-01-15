@@ -34,7 +34,14 @@
   },
   "dependencies": {
     "page": "^1.11.6",
+    "reducer": "^0.19.2",
+    "reducer-redux": "^1.2.1",
+    "reducers": "^3.0.0-alpha",
+    "redux": "^4.1.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.4.1",
     "sirv-cli": "^1.0.0",
+    "svelte-redux-connect": "^1.2.1",
     "validate.js": "^0.13.1"
   }
 }
