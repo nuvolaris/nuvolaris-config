@@ -1,17 +1,26 @@
 <script lang="ts">
-    import router from "page"; 
+    import router from "page";
+    import { target } from "./state";
     import Layout from "./Layout.svelte";
     import Home from "./pages/Home.svelte";
-    import Inhome from "./pages/Inhome.svelte";
-    
-
-    
+    import User from "./pages/User.svelte";
 
     let page = Home;
     let title = "Home";
     let hideTitle = true;
     let menu = [];
+
     router("/", () => ([page, title, hideTitle] = [Home, "Home", true]));
+    router(
+        "/app/user",
+        () => { console.log("cucu"); [page, title, hideTitle] = [User, "user", true] }
+    );
+
+    target.subscribe((url) => {
+        console.log("routing url='"+url+"'", router)
+        if(url != '')
+           router(url);
+    });
 
     /* role.subscribe((r) => {
         menu = [];

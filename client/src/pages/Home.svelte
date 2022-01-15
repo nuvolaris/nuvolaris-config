@@ -3,6 +3,7 @@
     import { onMount } from "svelte";
     import { token } from "../state";
     import { loggedId } from "../state";
+    
     import validate from "validate.js";
     import Inhome from "./Inhome.svelte"
     
@@ -12,6 +13,7 @@
     let errors = {};
     let isUser;
     let message = "";
+   
 
     onMount(() => (form = document.querySelector("form#main")));
 

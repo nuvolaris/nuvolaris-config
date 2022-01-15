@@ -20,7 +20,7 @@ module.exports = function (app, db) {
 
         let email = req.params.email;
         let password = req.params.password;
-        let isUser = await db.collection("anagrafica").findOne({ "email": email }, { "password": password })
+        let isUser = await db.collection("user").findOne({ "email": email }, { "password": password })
         res.send(isUser)
     })
 
@@ -28,7 +28,7 @@ module.exports = function (app, db) {
 
     app.post("/api/login", async (req, res) => {
         console.log("post /api/login ", req.body)
-        let out = await db.collection("anagrafica").findOne({ "email": req.body.email, "password": req.body.password })
+        let out = await db.collection("user").findOne({ "email": req.body.email, "password": req.body.password })
         //let out = { "id": "michele", "email": "michele@example.com" }
         if (out != null) {
             let token = generateRandomString(10);
@@ -50,7 +50,7 @@ module.exports = function (app, db) {
         let id = data._id
         delete data._id
         let upd = { "$set": data }
-        let out = await db.collection("anagrafica").updateOne({ "CF": data.CF }, upd)
+        let out = await db.collection("user").updateOne({ "CF": data.CF }, upd)
         res.send(out)
     })
 
@@ -59,7 +59,7 @@ module.exports = function (app, db) {
         //let out = {"ok": true, "count": 1}
         let data = req.body
         console.log(data)
-        let out = await db.collection("anagrafica").deleteOne({ CF: data.CF })
+        let out = await db.collection("user").deleteOne({ CF: data.CF })
         res.send(out)
     })
 }

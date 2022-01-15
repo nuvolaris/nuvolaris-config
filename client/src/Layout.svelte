@@ -1,5 +1,6 @@
 <script>
     import Menu from "./Menu.svelte";
+    import User from "./pages/User.svelte";
     export let page = Home;
     export let menu;
     export let title
