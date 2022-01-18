@@ -29,12 +29,12 @@ module.exports = function (app, db) {
     app.post("/api/login", async (req, res) => {
         console.log("post /api/login ", req.body)
         let out = await db.collection("user").findOne({ "email": req.body.email, "password": req.body.password })
-        //let out = { "id": "michele", "email": "michele@example.com" }
         if (out != null) {
             let token = generateRandomString(10);
-            let name = out.nome + " " + out.cognome;
+            let name = out.name + " " + out.surname;
+            let loggedEmail = out.email;
             let loggedId=out._id;
-            res.send({ token, name, loggedId })
+            res.send({ token, name, loggedEmail, loggedId })
             
 
         }
@@ -59,7 +59,7 @@ module.exports = function (app, db) {
         //let out = {"ok": true, "count": 1}
         let data = req.body
         console.log(data)
-        let out = await db.collection("user").deleteOne({ CF: data.CF })
+        let out = await db.collection("user").deleteOne({ email: data.email })
         res.send(out)
     })
 }

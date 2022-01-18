@@ -4,6 +4,7 @@
     import Layout from "./Layout.svelte";
     import Home from "./pages/Home.svelte";
     import User from "./pages/User.svelte";
+    import Namespace from "./pages/Namespace.svelte";
 
     let page = Home;
     let title = "Home";
@@ -15,6 +16,11 @@
         "/app/user",
         () => { console.log("cucu"); [page, title, hideTitle] = [User, "user", true] }
     );
+    router(
+        "/app/namespace",
+        () => { console.log("cucu"); [page, title, hideTitle] = [Namespace, "namespace", true] }
+    );
+
 
     target.subscribe((url) => {
         console.log("routing url='"+url+"'", router)

@@ -2,7 +2,7 @@
     import { get, post, del } from "../util"; 
     import { onMount } from "svelte";
     import { token } from "../state";
-    import { loggedId } from "../state";
+    import { loggedId,loggedEmail } from "../state";
     
     import validate from "validate.js";
     import Inhome from "./Inhome.svelte"

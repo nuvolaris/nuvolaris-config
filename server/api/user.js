@@ -4,7 +4,7 @@ module.exports = function(app, db) {
 
     // Get all users
     app.get("/api/users/", async(req, res) => {
-        let data = await db.collection("users").find().toArray()
+        let data = await db.collection("user").find().toArray()
         //console.log("get /api/users", data)
         res.send(data) 
     })
@@ -25,9 +25,15 @@ module.exports = function(app, db) {
     
     app.post("/api/user", async(req, res) => {
         console.log("post /api/user ", req.body)
-        let out = await db.collection("users").insertOne(req.body)
-        //let out = { "id": "michele", "email": "michele@example.com" }
-        res.send(out)
+        let ctrl = await db.collection("user").find({ "email": req.params.email })
+        if (ctrl != null) {
+            res.send({ error: "Email must be unique" })
+        }
+        else {
+            let out = await db.collection("user").insertOne(req.body)
+            res.send(out)
+        }
+        
        
     })
 
