@@ -9,3 +9,5 @@ export const loggedId = writable("");
 export const target = writable("");
 
 export const loggedEmail = writable("");
+
+export const loggedRole = writable("");

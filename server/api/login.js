@@ -34,7 +34,8 @@ module.exports = function (app, db) {
             let name = out.name + " " + out.surname;
             let loggedEmail = out.email;
             let loggedId=out._id;
-            res.send({ token, name, loggedEmail, loggedId })
+            let loggedRole=out.role;
+            res.send({ token, name, loggedEmail, loggedId, loggedRole })
             
 
         }

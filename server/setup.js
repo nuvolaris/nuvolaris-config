@@ -16,7 +16,8 @@ module.exports = async function (_db) {
         "address": 'via Terracini 28',
         "phone": '3926197994',
         "email": 'michele@sciabarra.com',
-        "password": 'nuvola'
+        "password": 'nuvola',
+        "namespace": 'basenamespace'
     })
     await store("user", "email", {
         "role": 'Administrator',
@@ -25,7 +26,8 @@ module.exports = async function (_db) {
         "address": 'via Terracini 28',
         "phone": '3286480094',
         "email": 'mirella@sciabarra.com',
-        "password": 'nuvola'
+        "password": 'nuvola',
+        "namespace": 'firstnamespace'
     })
     await store("user", "email", {
         "role": 'User',
@@ -34,7 +36,8 @@ module.exports = async function (_db) {
         "address": '',
         "phone": '',
         "email": 'info@sciabarra.com',
-        "password": 'nuvola'
+        "password": 'nuvola',
+        "namespace": 'princnamespace'
     })
     await store("namespace", "namespace", {
         "email": "info@sciabarra.com",

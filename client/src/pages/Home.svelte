@@ -2,7 +2,7 @@
     import { get, post, del } from "../util"; 
     import { onMount } from "svelte";
     import { token } from "../state";
-    import { loggedId,loggedEmail } from "../state";
+    import { loggedId,loggedEmail,loggedRole } from "../state";
     
     import validate from "validate.js";
     import Inhome from "./Inhome.svelte"
@@ -58,7 +58,8 @@
             if ("error" in isUser) message = isUser.error;
             else {
                 token.set(isUser.token);
-                loggedId.set(isUser.loggedId)
+                loggedId.set(isUser.loggedId);
+                loggedRole.set(isUser.loggedRole);
                              
             }
             
@@ -67,6 +68,7 @@
     function logout() {
         token.set("")
         loggedId.set("")
+        loggedRole.set("")
     }
     let data = {
         "username": "info@sciabarra.com",

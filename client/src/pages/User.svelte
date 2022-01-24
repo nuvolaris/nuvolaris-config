@@ -1,13 +1,16 @@
-<script lang="ts">
+<script>
   import validate from "validate.js";
   import { onMount } from "svelte";
   import { post, get, put } from "../util";
+  
 
   let roles = ["Administrator", "User"];
   let errors = {};
   let form = {};
   let message = "";
-  let data = {
+  let data = {};
+  function init(){
+    data= {
     role: "User",
     name: "",
     surname: "",
@@ -15,8 +18,11 @@
     phone: "",
     email: "",
     password: "",
+    namespace: "",
   };
-  onMount(() => (form = document.querySelector("form#main")));
+  form = document.querySelector("form#main");
+  }
+  onMount(init);
 
   function error(map, name) {
     if (!map) return "";
@@ -48,6 +54,9 @@
         minimum: 5,
       },
     },
+    namespace: {
+      presence: true,
+    },
 
     "Confirm-password": {
       // You need to confirm your password
@@ -63,14 +72,13 @@
     errors = validate(form, constraints);
 
     if (!errors) {
-      console.log(data);
+      //console.log(data);
       event.preventDefault();
       let res = await post("/user", data);
       if ("error" in res) message = res.error;
-        else {
-            data.email = "";
-            data.password = "";
-        }
+      else {
+        init();
+      }
       console.log(res);
     } else {
       console.log("errors", errors);
@@ -141,6 +149,20 @@
         <div class="col-sm-5 messages">
           {error(errors, "Confirm-password")}
         </div>
+      </th>
+    </tr>
+    <tr>
+      <th colspan="2">
+        <label for="namespace" class="small mb-1">Namespace*</label>
+        <input
+          bind:value={data.namespace}
+          class="input input-accent input-bordered w-full max-w-xs "
+          type="text"
+          name="namespace"
+          id="namespace"
+          placeholder="Insert namespace"
+        />
+        <div class="col-sm-5 messages">{error(errors, "namespace")}</div>
       </th>
     </tr>
     <tr>

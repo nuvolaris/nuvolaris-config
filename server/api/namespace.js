@@ -27,7 +27,7 @@ module.exports = function (app, db) {
         console.log("post /api/namespace ", req.body)
         /*Control if namespace is unique */
         let ctrl = await db.collection("namespace").find({ "namespace": req.params.namespace })
-        if (ctrl != null) {
+        if (ctrl.data != null) {
             res.send({ error: "Namespace must be unique" })
         }
         else {

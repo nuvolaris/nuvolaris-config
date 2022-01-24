@@ -25,12 +25,14 @@ module.exports = function(app, db) {
     
     app.post("/api/user", async(req, res) => {
         console.log("post /api/user ", req.body)
-        let ctrl = await db.collection("user").find({ "email": req.params.email })
-        if (ctrl != null) {
+        let ctrl = await db.collection("user").find({ "email": req.body.email })
+        //console.log("answer user",ctrl)
+        if (ctrl.data != null) {
             res.send({ error: "Email must be unique" })
         }
         else {
-            let out = await db.collection("user").insertOne(req.body)
+            let nmout = await db.collection("namespace").insertOne ({"email":req.body.email,"namespace":req.body.namespace})
+            let out = await db.collection("user").insertOne({"role":req.body.role,"name":req.body.name,"surname":req.body.surname,"address":req.body.address,"phone":req.body.phone,"email":req.body.email,"password":req.body.password})
             res.send(out)
         }
         
