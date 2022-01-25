@@ -4,6 +4,7 @@
     import Layout from "./Layout.svelte";
     import Home from "./pages/Home.svelte";
     import User from "./pages/User.svelte";
+    import UserDelete from "./pages/UserDelete.svelte";
     import Namespace from "./pages/Namespace.svelte";
 
     let page = Home;
@@ -19,6 +20,10 @@
     router(
         "/app/namespace",
         () => { console.log("cucu"); [page, title, hideTitle] = [Namespace, "namespace", true] }
+    );
+    router(
+        "/app/userdelete",
+        () => { console.log("cucu"); [page, title, hideTitle] = [UserDelete, "userdelete", true] }
     );
 
 

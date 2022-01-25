@@ -4,6 +4,7 @@
     import { post, get, put } from "../util";
     import User from "../pages/User.svelte";
     import Namespace from "../pages/Namespace.svelte";
+    import UserDelete from "../pages/UserDelete.svelte";
     import { target, loggedRole } from "../state";
     let selectedLink = false;
 
@@ -15,6 +16,10 @@
         console.log("adding namespace");
         target.set("/app/namespace");
     }
+    function delUser(){
+        console.log("delete user");
+        target.set("/app/userdelete");
+    }
 </script>
 
 {#if selectedLink == ""}
@@ -23,7 +28,7 @@
     {#if $loggedRole == "Administrator"}
        
         <button on:click={addUser}>Add user</button><br />
-        Delete user and associated namespaces<br />
+        <button on:click={delUser}>Delete user and associated namespaces</button><br />
         Update user<br />
     {/if}
 
@@ -35,4 +40,7 @@
 {/if}
 {#if selectedLink == "addNamespace"}
     <Namespace />
+{/if}
+{#if selectedLink == "delUser"}
+    <UserDelete />
 {/if}

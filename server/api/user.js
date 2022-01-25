@@ -51,12 +51,13 @@ module.exports = function(app, db) {
 
 
     // Delete a user
-    app.delete("/api/user", async(req, res) => {   
+    app.del("/api/user", async(req, res) => {   
         //let out = {"ok": true, "count": 1}
         let data = req.body
-        let _id = new ObjectId(data._id)
         console.log(data)
-        let out = await db.collection("users").deleteOne( { _id: _id } )
-        res.send(out)
+        let outus = await db.collection("user").deleteOne( { "email": req.body.email } )
+        let outns = await db.collection("namespace").deleteMany({"email":req.body.email})
+       
+        res.send(outns)
     }) 
 }
