@@ -16,8 +16,8 @@ module.exports = async function (_db) {
         "address": 'via Terracini 28',
         "phone": '3926197994',
         "email": 'michele@sciabarra.com',
-        "password": 'nuvola',
-        "namespace": 'basenamespace'
+        "password": 'nuvola'
+        
     })
     await store("user", "email", {
         "role": 'Administrator',
@@ -26,8 +26,7 @@ module.exports = async function (_db) {
         "address": 'via Terracini 28',
         "phone": '3286480094',
         "email": 'mirella@sciabarra.com',
-        "password": 'nuvola',
-        "namespace": 'firstnamespace'
+        "password": 'nuvola'
     })
     await store("user", "email", {
         "role": 'User',
@@ -36,8 +35,7 @@ module.exports = async function (_db) {
         "address": '',
         "phone": '',
         "email": 'info@sciabarra.com',
-        "password": 'nuvola',
-        "namespace": 'princnamespace'
+        "password": 'nuvola'
     })
     await store("namespace", "namespace", {
         "email": "info@sciabarra.com",
@@ -46,6 +44,14 @@ module.exports = async function (_db) {
     await store("namespace", "namespace", {
         "email": "info@sciabarra.com",
         "namespace": "deltaxiomicrom",
+    })
+    await store("namespace", "namespace", {
+        "email": "mirella@sciabarra.com",
+        "namespace": "namespacebase",
+    })
+    await store("namespace", "namespace", {
+        "email": "michele@sciabarra.com",
+        "namespace": "namespacealfa",
     })
 
 }

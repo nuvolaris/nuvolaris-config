@@ -60,7 +60,7 @@
                 token.set(isUser.token);
                 loggedId.set(isUser.loggedId);
                 loggedRole.set(isUser.loggedRole);
-                             
+                loggedEmail.set(isUser.loggedEmail);                             
             }
             
         } 

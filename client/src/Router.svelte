@@ -5,7 +5,9 @@
     import Home from "./pages/Home.svelte";
     import User from "./pages/User.svelte";
     import UserDelete from "./pages/UserDelete.svelte";
+    import UserUpdate from "./pages/UserUpdate.svelte";
     import Namespace from "./pages/Namespace.svelte";
+    
 
     let page = Home;
     let title = "Home";
@@ -15,15 +17,19 @@
     router("/", () => ([page, title, hideTitle] = [Home, "Home", true]));
     router(
         "/app/user",
-        () => { console.log("cucu"); [page, title, hideTitle] = [User, "user", true] }
+        () => { console.log("user"); [page, title, hideTitle] = [User, "user", true] }
     );
     router(
         "/app/namespace",
-        () => { console.log("cucu"); [page, title, hideTitle] = [Namespace, "namespace", true] }
+        () => { console.log("namespace"); [page, title, hideTitle] = [Namespace, "namespace", true] }
     );
     router(
         "/app/userdelete",
-        () => { console.log("cucu"); [page, title, hideTitle] = [UserDelete, "userdelete", true] }
+        () => { console.log("userdelete"); [page, title, hideTitle] = [UserDelete, "userdelete", true] }
+    );
+    router(
+        "/app/userupdate",
+        () => { console.log("userupdate"); [page, title, hideTitle] = [UserUpdate, "userupdate", true] }
     );
 
 

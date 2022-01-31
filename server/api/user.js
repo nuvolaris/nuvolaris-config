@@ -10,11 +10,11 @@ module.exports = function(app, db) {
     })
 
     // Get a single user
-    app.get("/api/user/:id", async(req, res) => {
-        console.log("get /api/user", req.params.id)
+    app.get("/api/user/:email", async(req, res) => {
+        console.log("get /api/user", req.params.email)
         //let out = { "id": "michele", "email": "michele@example.com" }
-        let _id = new ObjectId(req.params.id)
-        let data = await db.collection("users").findOne( {_id: _id })
+       
+        let data = await db.collection("user").findOne( {"email":req.params.email })
         console.log(data)
         res.send(data)
     })
@@ -40,12 +40,12 @@ module.exports = function(app, db) {
     })
 
     // Update a user
-    app.put("/api/user", async(req, res)  => {
-        let data = req.body
-        let _id = new ObjectId(data._id)
-        delete data._id
-        console.log("put /api/user ", data)
-        let out = await db.collection("users").replaceOne({_id:_id},data)
+    app.put("/api/user/:email", async(req, res)  => {
+        let dt = req.body
+        //data._id =new ObjectId(data, _id)
+        delete dt._id
+        console.log("put /api/user ", dt)
+        let out = await db.collection("user").replaceOne({"email":req.params.email},dt)
         res.send(out)
     })
 
