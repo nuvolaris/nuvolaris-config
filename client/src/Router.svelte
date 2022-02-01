@@ -7,6 +7,7 @@
     import UserDelete from "./pages/UserDelete.svelte";
     import UserUpdate from "./pages/UserUpdate.svelte";
     import Namespace from "./pages/Namespace.svelte";
+    import NamespaceDelete from "./pages/NamespaceDelete.svelte";
     
 
     let page = Home;
@@ -30,6 +31,10 @@
     router(
         "/app/userupdate",
         () => { console.log("userupdate"); [page, title, hideTitle] = [UserUpdate, "userupdate", true] }
+    );
+    router(
+        "/app/namespacedelete",
+        () => { console.log("namespacedelete"); [page, title, hideTitle] = [NamespaceDelete, "namespacedelete", true] }
     );
 
 
