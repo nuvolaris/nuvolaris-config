@@ -2,6 +2,7 @@
     export let menu;
     export let title;
     import { onMount } from "svelte";
+ 
     onMount(() => {
         const btn = document.querySelector("button.mobile-menu-button");
         const menu = document.querySelector(".mobile-menu");
@@ -13,7 +14,7 @@
         token.set("");
     }
 
-    import {token} from "./state";
+    import {token,target} from "./state";
    
 </script>
 
@@ -23,7 +24,7 @@
             <div class="flex space-x-7">
                 <div>
                     <!-- Website Logo -->
-                    <a href="/" class="flex items-center py-4 px-2">
+                    <a href="/" class="flex items-center py-4 px-2" on:click={target.set("")}>
                         <img
                             src="/logonuvolaris.jpeg"
                             alt="Logo"

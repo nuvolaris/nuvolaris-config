@@ -8,12 +8,14 @@
     import UserUpdate from "./pages/UserUpdate.svelte";
     import Namespace from "./pages/Namespace.svelte";
     import NamespaceDelete from "./pages/NamespaceDelete.svelte";
+import { onMount } from "svelte";
     
 
     let page = Home;
     let title = "Home";
     let hideTitle = true;
     let menu = [];
+    onMount(()=>console.log("ciao"))
 
     router("/", () => ([page, title, hideTitle] = [Home, "Home", true]));
     router(
@@ -44,43 +46,7 @@
            router(url);
     });
 
-    /* role.subscribe((r) => {
-        menu = [];
-        if (r != "") {
-            
-            menu.push({ path: "/app/calendar", name: "Appuntamenti" });
-            if (r=="Infermiere" || r=="Amministratore" || r=="Stomaterapista"){
-                menu.push({ path: "/app/schedule", name: "Prenota" });
-                menu.push({ path: "/app/users", name: "Gestione" });
-            }
-            menu.push({ path: "/app/conference", name: "Conferenza" });   
-        }
-        
-    });
- 
     
-
-    router(
-        "/app/calendar",
-        () => $role!="" ? ([page, title, hideTitle] = [Calendar, "Appuntamenti", false]) : undefined
-    );
-
-    router(
-        "/app/schedule",
-        () => $role!="" ? ([page, title, hideTitle] = [Schedule, "Prenota", false]) : undefined
-    );
-
-    router(
-        "/app/users",
-        () => $role!="" ? ([page, title, hideTitle] = [Users, "Gestione", false]) : undefined
-    );
-
-    router(
-        "/app/conference",
-        () =>  ([page, title, hideTitle] = [Conference, "Conferenza", true]) 
-    );
-
-    */
     router.start();
 </script>
 

@@ -1,7 +1,7 @@
 <script>
     import { get, post, del } from "../util"; 
     import { onMount } from "svelte";
-    import { token } from "../state";
+    import { target, token } from "../state";
     import { loggedId,loggedEmail,loggedRole } from "../state";
     
     import validate from "validate.js";
@@ -60,7 +60,8 @@
                 token.set(isUser.token);
                 loggedId.set(isUser.loggedId);
                 loggedRole.set(isUser.loggedRole);
-                loggedEmail.set(isUser.loggedEmail);                             
+                loggedEmail.set(isUser.loggedEmail);
+                target.set("/app/inhome");                             
             }
             
         } 
