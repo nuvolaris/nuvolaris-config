@@ -2,12 +2,15 @@
     import { async } from "validate.js";
     import { post, get, put } from "../util";
     import { onMount } from "svelte";
-    import { loggedEmail } from "../state";
+    import { loggedEmail, loggedRole } from "../state";
     let message = "";
 
-    let users = [];
+    let users;
     async function load() {
-        users = await get("/users");
+        if ($loggedRole=="Administrator") {
+            users = await get("/users");
+        }
+        else data.email=$loggedEmail;
     }
     onMount(load);
 
@@ -27,6 +30,7 @@
 <form>
     <!-- svelte-ignore a11y-label-has-associated-control -->
     <label>Select user</label>
+    {#if ($loggedRole=="Administrator")}
     {#await load()}
         <p>Caricamento...</p>
     {:then}
@@ -43,6 +47,9 @@
             {/each}
         </select>
     {/await}
+    {:else}
+    <input name="email" id="email" value={$loggedEmail}>
+    {/if}
     <!-- svelte-ignore a11y-label-has-associated-control -->
     <label>Insert namespace</label>
     <input
@@ -57,7 +64,7 @@
         <span class="label-text text-red-600">{message}</span>
     </label>
     <button
-        class="btn btn-accent"
+    class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
         on:click|preventDefault={save}
         href="pages/authentication/login"
     >
