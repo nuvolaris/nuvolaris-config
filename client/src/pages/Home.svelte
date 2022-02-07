@@ -7,7 +7,6 @@
     import validate from "validate.js";
     import Inhome from "./Inhome.svelte"
     
-
     // Hook up the form so we can prevent it from being posted
     let form = {};
     let errors = {};

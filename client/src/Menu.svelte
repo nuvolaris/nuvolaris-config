@@ -2,6 +2,7 @@
     export let menu;
     export let title;
     import { onMount } from "svelte";
+    import { target, token } from "./state";
  
     onMount(() => {
         const btn = document.querySelector("button.mobile-menu-button");
@@ -10,12 +11,11 @@
             menu.classList.toggle("hidden");
         });
     });
+
     function logout() {
         token.set("");
+        target.set("/app/home")
     }
-
-    import {token,target} from "./state";
-   
 </script>
 
 <nav class="bg-white shadow-lg">
@@ -24,7 +24,9 @@
             <div class="flex space-x-7">
                 <div>
                     <!-- Website Logo -->
-                    <a href="/" class="flex items-center py-4 px-2" on:click={target.set("")}>
+                    <a href="/" class="flex items-center py-4 px-2"
+                       on:click|preventDefault={()=>target.set("/app/home")}
+                    >
                         <img
                             src="/logonuvolaris.jpeg"
                             alt="Logo"
