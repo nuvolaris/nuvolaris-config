@@ -1,30 +1,41 @@
 <script lang="ts">
-    import { async } from "validate.js";
-    import { post, get, put } from "../util";
+
+    import { post, get } from "../util";
     import { onMount } from "svelte";
     import { loggedEmail, loggedRole } from "../state";
-    let message = "";
 
+    let message = "";
     let users;
+
     async function load() {
+
         if ($loggedRole=="Administrator") {
             users = await get("/users");
         }
+
         else data.email=$loggedEmail;
+
     }
+
     onMount(load);
 
     let data = { email: "", namespace: "" };
+
     async function save(event) {
-        event.preventDefault();
+
         let res = await post("/namespace", data);
+
         if ("error" in res) message = res.error;
+
         else {
             data.email = "";
             data.namespace = "";
         }
+
         console.log(res);
+
     }
+
 </script>
 
 <form>

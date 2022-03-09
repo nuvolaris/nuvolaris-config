@@ -1,12 +1,19 @@
 <script>
+
+    import { onMount } from "svelte";
+    import { token } from "./state";
+
     export let menu;
     export let title;
-    import { onMount } from "svelte";
-    import { target, token } from "./state";
  
     onMount(() => {
         const btn = document.querySelector("button.mobile-menu-button");
         const menu = document.querySelector(".mobile-menu");
+        /**
+         *  TO DO: replace with proper on:click handler;
+         *  using imperative listeners without removing them upon
+         *  component destroy leads to memory leaks
+         */
         btn.addEventListener("click", () => {
             menu.classList.toggle("hidden");
         });
@@ -14,7 +21,6 @@
 
     function logout() {
         token.set("");
-        target.set("/app/home")
     }
 </script>
 
@@ -24,9 +30,7 @@
             <div class="flex space-x-7">
                 <div>
                     <!-- Website Logo -->
-                    <a href="/" class="flex items-center py-4 px-2"
-                       on:click|preventDefault={()=>target.set("/app/home")}
-                    >
+                    <a href="/app/home" class="flex items-center py-4 px-2">
                         <img
                             src="/logonuvolaris.jpeg"
                             alt="Logo"

@@ -1,20 +1,15 @@
 <script>
-    import { get, post, del } from "../util"; 
-    import { onMount } from "svelte";
-    import { target, token } from "../state";
+    import { post } from "../util"; 
+    import { token } from "../state";
     import { loggedId,loggedEmail,loggedRole } from "../state";
     
     import validate from "validate.js";
     import Inhome from "./Inhome.svelte"
     
     // Hook up the form so we can prevent it from being posted
-    let form = {};
     let errors = {};
     let isUser;
     let message = "";
-   
-
-    onMount(() => (form = document.querySelector("form#main")));
 
     function error(map, name) {
         if (!map) return "";
@@ -48,33 +43,25 @@
             },
         },
     };
-    async function submit() {
+
+    async function submit(event) {
         // validate the form against the constraints
-        errors = validate(form, constraints);
+        errors = validate(event.target, constraints);
         if (!errors) {
-            //alert("success");
+            //alert("success");s
             isUser = await post("/login", data);
             if ("error" in isUser) message = isUser.error;
             else {
                 token.set(isUser.token);
                 loggedId.set(isUser.loggedId);
                 loggedRole.set(isUser.loggedRole);
-                loggedEmail.set(isUser.loggedEmail);
-                target.set("/app/inhome");                             
+                loggedEmail.set(isUser.loggedEmail)                            
             }
             
         } 
     }
-    function logout() {
-        token.set("")
-        loggedId.set("")
-        loggedRole.set("")
-    }
-    let data = {
-        "username": "info@sciabarra.com",
-        "password": "openmed"
-    };
-    import { loggedUser } from "../state";
+
+    let data = {};
 
 </script>
 
@@ -90,7 +77,7 @@
             <label class="label">
                 <span class="label-text text-blue-500">Insert login and password</span>
             </label>
-                <form id="main">
+                <form id="main" on:submit|preventDefault={submit}>
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <div class="form-control">
                         <label class="label">
@@ -135,9 +122,8 @@
                         <span class="label-text text-red-600">{message}</span>
                     </label>
                     <div class="form-control">
-                        <button type="button"
+                        <button type="submit"
                             class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out"
-                            on:click|preventDefault={submit}
                             color="primary"
                             block
                             href="pages/authentication/login">Login</button

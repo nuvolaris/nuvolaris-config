@@ -1,18 +1,21 @@
 <script>
     import validate from "validate.js";
     import { onMount } from "svelte";
-    import { post, get, put, del } from "../util";
-    import { target, loggedRole } from "../state";
+    import { get, del } from "../util";
+
     let users = [];
     let data = { email: "", confirmuser: "" };
     let message = "";
     let errors = {};
     let form = {};
+
     async function load() {
         users = await get("/users");
         form = document.querySelector("form#main");
     }
+
     onMount(load);
+
     function error(map, name) {
         if (!map) return "";
         if (name in map) {
@@ -45,13 +48,12 @@
             },
         },
     };
-
     
     async function cancel(event) {
+
         errors = validate(form, constraints);
 
         if (!errors) {
-            //console.log(data);
             event.preventDefault();
             let res = await del("/user", data);
             if ("error" in res) message = res.error;
