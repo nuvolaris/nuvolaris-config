@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "client": "^0.0.1",
+    "server": "^1.0.37",
+    "validate.js": "^0.13.1"
+  }
+}
