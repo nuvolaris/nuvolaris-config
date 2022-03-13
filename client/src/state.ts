@@ -1,8 +1,8 @@
 import { writable } from 'svelte/store';
 
-export const token = writable("");
+// TO DO: authentication data could be stored in the same structure
 
-export const target = writable("/app/home");
+export const token = writable("");
 
 export const loggedUser = writable("");
 

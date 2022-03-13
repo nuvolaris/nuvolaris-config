@@ -1,44 +1,59 @@
 <script>
+
   import validate, { async } from "validate.js";
   import { onMount } from "svelte";
-  import { post, get, put } from "../util";
+  import { get, put } from "../util";
   import { loggedEmail, loggedRole } from "../state";
 
-  let roles = ["Administrator", "User"];
   let errors = {};
   let form = {};
   let message = "";
   let data = {};
   let users = [];
   let upuser="";
+
   async function load() {
+
     if ($loggedRole == "Administrator") {
+
       users = await get("/users");
+
     } else {
+
       data.email = $loggedEmail;
       data = await get("/user/" + $loggedEmail);
       console.log("data", $loggedEmail);
+
     }
 
     form = document.querySelector("form#main");
   }
+
   onMount(load);
 
   function error(map, name) {
+
     if (!map) return "";
+
     if (name in map) {
+
       //document.getElementById(name).classList.add("text-red")
       let label = document.querySelector("label[for='" + name + "']");
       if (label) label.classList.add("text-red-500");
 
       return map[name].join("<br>");
+
     } else {
+
       let label = document.querySelector("label[for='" + name + "']");
       if (label) label.classList.remove("text-red-500");
-      //document.getElementById(name).classList.remove("text-red")
+
     }
+
     return "";
+
   }
+
   var constraints = {
     email: {
       // Email is required
@@ -55,25 +70,35 @@
       },
     },
   };
+
   async function update(event) {
+
     errors = validate(form, constraints);
 
     if (!errors) {
+
       console.log("email",data.email);
       event.preventDefault();
       let res = await put("/user/" + data.email, data);
-      if ("error" in res) message = res.error;
-      else {
+
+      if ("error" in res) {
+        message = res.error;
+      } else {
         data = {};
         upuser="";
         console.log(res);
       }
+      
     } else {
+
       console.log("errors", errors);
+
     }
+
   }
-  async function selectupdate(event){
-      event.preventDefault();
+
+  async function selectupdate(event) {
+
       console.log("email",data.email)
       let res = await get("/user/" + data.email);
       if ("error" in res) message = res.error;
@@ -82,9 +107,8 @@
         data = res;
       }
     
-    
-
   }
+
 </script>
 
 <h1>Update user</h1>
@@ -114,7 +138,6 @@
     {/await}
     {:else}
  
-
   <table class="table-fixed">
     <tr>
       <th colspan="2">

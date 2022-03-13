@@ -1,22 +1,27 @@
 <script>
+
     import validate from "validate.js";
     import { onMount } from "svelte";
-    import {  del } from "../util";
-    import { target, loggedRole,loggedEmail } from "../state";
-    let users = [];
+    import { del } from "../util";
+    import { loggedRole,loggedEmail } from "../state";
+
     let data = { email: "", namespace: "" };
     let message = "";
     let errors = {};
     let form = {};
+
     async function load() {
         
         form = document.querySelector("form#main");
     }
+
     onMount(load);
+
     function error(map, name) {
+
         if (!map) return "";
+
         if (name in map) {
-            //document.getElementById(name).classList.add("text-red")
             let label = document.querySelector("label[for='" + name + "']");
             if (label) label.classList.add("text-red-500");
 
@@ -24,10 +29,11 @@
         } else {
             let label = document.querySelector("label[for='" + name + "']");
             if (label) label.classList.remove("text-red-500");
-            //document.getElementById(name).classList.remove("text-red")
         }
+
         return "";
     }
+
     var constraints = {
         "namespace": {
             // You need to confirm your password
@@ -37,8 +43,8 @@
         },
     };
 
-    
     async function cancel(event) {
+
         errors = validate(form, constraints);
 
         if (!errors) {
@@ -60,11 +66,12 @@
         } else {
             console.log("errors", errors);
         }
+
     }
+
 </script>
 
 <form id="main">
-    
     
     <!-- svelte-ignore a11y-label-has-associated-control -->
     <label for="namespace" class="small mb-1">Insert namespace to be deleted</label>
@@ -78,7 +85,7 @@
     /><br />
     <div class="col-sm-5 messages">
         {error(errors, "namespace")}
-      </div>
+    </div>
     <!-- svelte-ignore a11y-label-has-associated-control -->
     <label class="label">
         <span class="label-text text-red-600">{message}</span>
