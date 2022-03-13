@@ -15,12 +15,19 @@
 // specific language governing permissions and limitations
 // under the License.
 {
-	//"name": "MongoDB",
+	"name": "nuvolaris",
 	"build": {"dockerfile": "Dockerfile"},
 	//"image": "ghcr.io/nuvolaris/nuvolaris-devkit:0.2.0-trinity.22030813",
 	"mounts": [ "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"],
 	"remoteUser": "nuvolaris",
 	"overrideCommand": false,
-	"runArgs": ["--network=host"],
-	"extensions": ["svelte.svelte-vscode"]
+	"runArgs": [
+		"--network=host"
+	],
+	"extensions": [
+		"stuart.unique-window-colors",
+		"oderwat.indent-rainbow",
+		"eamodio.gitlens",
+		"mhutchie.git-graph"
+	]
 }

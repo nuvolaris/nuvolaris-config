@@ -16,7 +16,7 @@
 # under the License.
 #
 node_modules/
-/public/build/
+client/public/build/
 .DS_Store
 .*-version
 kubeconfig
