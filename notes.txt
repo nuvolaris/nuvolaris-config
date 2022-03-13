@@ -7,5 +7,5 @@ git config --global user.name "Mirella Di Girolamo"
 /*menu*/
 Insert, cancel, find user, insert namespace
 /* namespace */
-for 1 user we can have many namespace. They are 20 charters long and are unique. They have no space or special character except '-' 
+for 1 user we can have many namespaces. They are 20 charters long and are unique. They have no space or special character except '-' 
 

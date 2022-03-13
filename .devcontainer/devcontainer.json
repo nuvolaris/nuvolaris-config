@@ -15,11 +15,9 @@
 // specific language governing permissions and limitations
 // under the License.
 {
-	"name": "MongoDB",
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
-	//"image": "ghcr.io/nuvolaris/nuvolaris-devkit:neo-21.1228.12",
+	//"name": "MongoDB",
+	"build": {"dockerfile": "Dockerfile"},
+	//"image": "ghcr.io/nuvolaris/nuvolaris-devkit:0.2.0-trinity.22030813",
 	"mounts": [ "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"],
 	"remoteUser": "nuvolaris",
 	"overrideCommand": false,
