@@ -35,3 +35,5 @@ tasks:
       - kubectl apply -f deploy/whisk-dbonly.yaml
     status:
       - curl localhost:5984
+
+  

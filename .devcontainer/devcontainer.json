@@ -16,11 +16,9 @@
 // under the License.
 {
 	"name": "nuvolaris",
-	"image": "ghcr.io/nuvolaris/nuvolaris-devkit:0.2.0-trinity.22033116",
-	//"build": { "dockerfile": "Dockerfile" },
-	"mounts": [
-		"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
-	],
+	"build": {"dockerfile": "Dockerfile"},
+	//"image": "ghcr.io/nuvolaris/nuvolaris-devkit:0.2.0-trinity.22030813",
+	"mounts": [ "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"],
 	"remoteUser": "nuvolaris",
 	"overrideCommand": false,
 	"runArgs": [
