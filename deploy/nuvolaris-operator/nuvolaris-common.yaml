@@ -15,23 +15,14 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-version: '3'
-
-tasks:
-
-  setup:
-    cmds:
-      - task: couchdb
-      - npm install server
-      - npm install client 
-    status:
-      - test -d server/node_modules
-      - test -d client/node_modules
-
-  couchdb:
-    cmds:
-      - kubectl apply -k deploy/nuvolaris-operator
-      - kubectl -n nuvolaris wait pod/nuvolaris-operator --for=condition=ready
-      - kubectl apply -f deploy/whisk-dbonly.yaml
-    status:
-      - curl localhost:5984
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nuvolaris
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+  namespace: nuvolaris
